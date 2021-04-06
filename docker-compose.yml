@@ -1,0 +1,19 @@
+version : "3"
+
+services: 
+    sv-backend:
+        container_name: sv-app
+        restart: always
+        build: .
+        ports: 
+          - "8080:8080"
+        links: 
+          - mongoservice
+        volumes: 
+          - .:/usr/src/app
+    
+    mongoservice:
+        container_name:   mongoservice
+        image: mongo
+        ports:
+          - "27017:27017"
